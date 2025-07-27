@@ -1,0 +1,17 @@
+[package]
+name = "play"
+version = "1.0.0"
+authors = []
+
+[addresses]
+play = "_"
+
+[dev-addresses]
+play = "0x7d2a5f5f1a1bd409a4f6dc6e44045ba64de71f756b793480b46e736944bbde27"
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "mainnet"
+subdir = "aptos-framework"
+
+[dev-dependencies]
