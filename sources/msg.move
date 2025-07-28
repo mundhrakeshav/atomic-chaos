@@ -14,6 +14,9 @@ module play::message {
     // }
 
 
+    /// Sets a message for the given account.
+    /// This function can be called by anyone to write a message to their own account.
+    /// If a message already exists for the account, it will be overwritten.
     public entry fun set_message(account: &signer, message: string::String) acquires MessageHolder {
         let account_addr = signer::address_of(account);
 
@@ -24,6 +27,10 @@ module play::message {
         move_to(account, MessageHolder { message });
     }
 
+    /// Retrieves the message for a given account address.
+    /// This is a read-only view function.
+    /// It will abort if no message is found for the address.
+    /// Note: This function also computes and prints the Keccak256 hash of the message for debugging purposes.
     #[view]
     public fun get_message(account_addr: address): string::String acquires MessageHolder {
         assert!(exists<MessageHolder>(account_addr), 0);
