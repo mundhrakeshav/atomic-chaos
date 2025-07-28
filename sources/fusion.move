@@ -100,13 +100,15 @@ module play::fusion {
         expiration_time: u64,
     ) acquires FusionStore, SwapData, Events {
         let sender_addr = signer::address_of(sender);
-        assert!(exists<FusionStore>(sender_addr), E_FUSION_STORE_NOT_FOUND);
-        let fusion_store = borrow_global<FusionStore>(sender_addr);
 
+        assert!(exists<FusionStore>(sender_addr), E_FUSION_STORE_NOT_FOUND);
+
+        let fusion_store = borrow_global<FusionStore>(sender_addr);
         let resource_signer = aptos_framework::account::create_signer_with_capability(&fusion_store.signer_cap);
         let resource_addr = signer::address_of(&resource_signer);
-
         assert!(exists<SwapData>(resource_addr), E_SWAP_DATA_NOT_FOUND);
+
+
         let swap_data = borrow_global_mut<SwapData>(resource_addr);
         assert!(!table::contains(&swap_data.swaps, secret_hash), E_SWAP_ALREADY_INITIATED);
 
