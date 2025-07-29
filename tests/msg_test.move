@@ -3,7 +3,7 @@ module play::message_tests {
     use std::string;
     use std::signer;
     use aptos_framework::account;
-    use play::msg;
+    use play::message;
 
     #[test]
     fun test_set_and_get_message() {
@@ -11,10 +11,10 @@ module play::message_tests {
         let test_account = account::create_account_for_test(@0x1);
 
         // Test setting a message
-        msg::set_message(&test_account, string::utf8(b"Hello World"));
+        message::set_message(&test_account, string::utf8(b"Hello World"));
 
         // Verify the message was set correctly
-        let stored_message = msg::get_message(signer::address_of(&test_account));
+        let stored_message = message::get_message(signer::address_of(&test_account));
         assert!(stored_message == string::utf8(b"Hello World"), 0);
     }
 }

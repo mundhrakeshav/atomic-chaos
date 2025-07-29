@@ -16,9 +16,11 @@ test-dev:
 publish-dev:
 	aptos move publish --assume-yes --dev
 
-clean-dev:
+clean:
 	rm -rf move/build
 
+lint-dev:
+	aptos move lint --dev
 # Set API_URL based on NETWORK. This logic must be outside any target.
 ifeq ($(NETWORK),localnet)
 API_URL=http://127.0.0.1:8080/v1
