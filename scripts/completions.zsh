@@ -3,18 +3,23 @@
 _aptos_play_make_completions() {
     local -a targets
     targets=(
-        "start-node"
-        "compile-dev"
-        "test-dev"
-        "publish-dev"
+        "clean"
         "clean-dev"
+        "compile-dev"
+        "fund-dev"
         "get_by_hash"
+        "lint-dev"
+        "node"
+        "publish-dev"
         "run"
+        "start-node"
+        "test-dev"
         "view"
     )
 
     local -a get_by_hash_args=("NETWORK=" "TXN_HASH=")
     local -a run_view_args=("ACCOUNT=" "MODULE=" "FUNCTION=" "ARGS=")
+    local -a fund_dev_args=("ACCOUNT=" "AMOUNT=" "NETWORK=")
 
     # The current word being completed is in COMP_CWORD
     # The command line words are in the COMP_WORDS array
@@ -31,6 +36,9 @@ _aptos_play_make_completions() {
         case "${words[2]}" in
             "get_by_hash")
                 compadd -a get_by_hash_args
+                ;;
+            "fund-dev")
+                compadd -a fund_dev_args
                 ;;
             "run" | "view")
                 compadd -a run_view_args

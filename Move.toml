@@ -7,7 +7,7 @@ authors = []
 play = "_"
 
 [dev-addresses]
-play = "0x7d2a5f5f1a1bd409a4f6dc6e44045ba64de71f756b793480b46e736944bbde27"
+play = "0x1cce31ab18c8f81e92c0aa3c26a6a1fc7a5bbbda50f80c4f1ad7d3e9eb04242d"
 
 [dependencies.AptosFramework]
 git = "https://github.com/aptos-labs/aptos-framework.git"
