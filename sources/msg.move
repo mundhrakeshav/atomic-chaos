@@ -3,10 +3,12 @@ module play::message {
     use std::signer;
 
     struct MessageHolder has key, store, drop {
-        message: string::String,
+        message: string::String
     }
 
-    public entry fun set_message(account: &signer, message: string::String) acquires MessageHolder {
+    public entry fun set_message(
+        account: &signer, message: string::String
+    ) acquires MessageHolder {
         let account_addr = signer::address_of(account);
 
         if (exists<MessageHolder>(account_addr)) {

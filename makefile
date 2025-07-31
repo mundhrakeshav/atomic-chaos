@@ -87,3 +87,6 @@ view:
 
 node:
 	aptos node run-localnet --with-indexer-api --with-faucet --force-restart
+
+fmt:
+	aptos move fmt
